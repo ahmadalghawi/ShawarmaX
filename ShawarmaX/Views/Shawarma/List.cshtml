@@ -1,0 +1,27 @@
+﻿@model ShawarmaListViewModel
+
+<style>
+    h1 {
+        color: slategrey;
+        font-family: Cookie;
+        font-size: 400%;
+    }
+</style>
+<h1>@Model.CurrentCategory</h1>
+
+@foreach (var shawarma in Model.shawarmas)
+{
+    <partial name="_ShawarmaCard" model="shawarma" />
+    @*<div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="@shawarma.ImageUrl" alt="">
+                <div class="caption">
+                    <h3 class="pull-right">@shawarma.Price.ToString("c")</h3>
+                    <h3>
+                        <a title="@shawarma.LongDescription">@shawarma.Name</a>
+                    </h3>
+                    <p>@shawarma.ShortDescription</p>
+                </div>
+            </div>
+        </div>*@
+}
