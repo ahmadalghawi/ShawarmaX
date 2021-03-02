@@ -1,5 +1,10 @@
 ﻿
 @model Shawarma
+    <style>
+        body {
+            background-image: url('/images/backgrund 1.jpg');
+        }
+    </style>
 
 <h2>@Model.Name</h2>
 
@@ -12,5 +17,11 @@
         </h3>
         <h4>@Model.ShortDescription</h4>
         <p>@Model.LongDescription</p>
+        <div class="addToCart">
+            <p class="button">
+                <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+                   asp-route-Sid="@Model.Id">Add to cart</a>
+            </p>
+        </div>
     </div>
 </div>

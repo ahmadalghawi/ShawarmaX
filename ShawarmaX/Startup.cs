@@ -30,6 +30,9 @@ namespace ShawarmaX
 
             services.AddScoped<IShawarmaRepository, ShawarmaRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession();
             services.AddControllersWithViews();
         }
 
@@ -48,8 +51,10 @@ namespace ShawarmaX
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
+            
 
             app.UseAuthorization();
 

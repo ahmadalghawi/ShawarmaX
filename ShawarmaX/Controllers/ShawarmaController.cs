@@ -19,20 +19,43 @@ namespace ShawarmaX.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public IActionResult List()
+        //public IActionResult List()
+        //{
+        //    ShawarmaListViewModel shawarmaListViewModel = new ShawarmaListViewModel();
+        //    shawarmaListViewModel.shawarmas = _shawarmaRepository.AllShawarma;
+        //    shawarmaListViewModel.CurrentCategory = "main food";
+        //    return View(shawarmaListViewModel);
+        //}
+        public ViewResult List(string category)
         {
-            ShawarmaListViewModel shawarmaListViewModel = new ShawarmaListViewModel();
-            shawarmaListViewModel.shawarmas = _shawarmaRepository.AllShawarma;
-            shawarmaListViewModel.CurrentCategory = "main food";
-            return View(shawarmaListViewModel);
+            IEnumerable<Shawarma> shawarmas;
+            string currentCategory;
+
+            if (string.IsNullOrEmpty(category))
+            {
+                shawarmas = _shawarmaRepository.AllShawarma.OrderBy(p => p.Id);
+                currentCategory = "All Shawarma";
+            }
+            else
+            {
+                shawarmas = _shawarmaRepository.AllShawarma.Where(p => p.Category.CategoryName == category)
+                    .OrderBy(p => p.Id);
+                currentCategory = _categoryRepository.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+            }
+
+            return View(new ShawarmaListViewModel
+            {
+                shawarmas = shawarmas,
+                CurrentCategory = currentCategory
+            });
         }
         public IActionResult Details(int id)
         {
-            var pie = _shawarmaRepository.GetPieById(id);
-            if (pie == null)
+            var shawarma = _shawarmaRepository.GetPieById(id);
+            if (shawarma == null)
                 return NotFound();
 
-            return View(pie);
+            return View(shawarma);
         }
     }
 }

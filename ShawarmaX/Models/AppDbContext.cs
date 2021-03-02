@@ -14,6 +14,7 @@ namespace ShawarmaX.Models
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Shawarma> Shawarmas { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
