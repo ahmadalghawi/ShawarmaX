@@ -3,7 +3,7 @@
 <li class="dropdown">
     <a asp-controller="Shawarma"
        asp-action="Index"
-       class="dropdown-toggle" data-toggle="dropdown">Shawarma<b class="caret"></b></a>
+       class="dropdown-toggle" data-toggle="dropdown">Food Menu<b class="caret"></b></a>
     <ul class="dropdown-menu">
         @foreach (var category in Model)
         {
@@ -14,7 +14,7 @@
         }
         <li class="divider"></li>
         <li>
-            <a asp-controller="Shawarma" asp-action="List" asp-route-Category="">View all Shawarma and food</a>
+            <a asp-controller="Shawarma" asp-action="List" asp-route-Category="">View all Food Menu</a>
         </li>
     </ul>
 </li>

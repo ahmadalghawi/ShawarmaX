@@ -1,7 +1,11 @@
 ﻿@model ShoppingCartViewModel
-
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+    </style>
 <h2>Your shopping cart</h2>
-<h4>Here are the delicious pies in your shopping cart.</h4>
+<h4>Here are the delicious Foods in your shopping cart.</h4>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -17,15 +21,17 @@
         {
             <tr>
                 <td class="text-center">@line.Amount </td>
-                
+
                 <td class="text-left">@line.Shawarma.Name</td>
                 <td class="text-right">@line.Shawarma.Price.ToString("c")</td>
                 <td class="text-right">
                     @((line.Amount * line.Shawarma.Price).ToString("c"))
-                    
+
                 </td>
-                <td class="text-center"><a class="btn btn-xs" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart"
-                     asp-route-Sid="@line.Shawarma.Id">Remove</a></td>
+                <td class="text-center">
+                    <a class="btn btn-xs" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart"
+                       asp-route-Sid="@line.Shawarma.Id">Remove</a>
+                </td>
             </tr>
         }
     </tbody>
@@ -38,4 +44,7 @@
         </tr>
     </tfoot>
 </table>
+<div class="text-center">
+    <a class="btn btn-primary" asp-controller="Order" asp-action="Checkout">Check out now!</a>
+</div>
 

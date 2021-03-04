@@ -2,7 +2,7 @@
 @model homeViewModel
 <style>
     body {
-        background-image: url('/images/backgrund 1.jpg');
+        background-image: url('/images/ShawarmaX1920x1080px.jpg');
     }
 
     p {
@@ -10,22 +10,23 @@
         font-family: Cookie;
         font-size: 200px;
     }
-    h2,h4 {
-        color:darkred;
-        font-family: Cookie;
+    h2, h4 {
+        color: darkred;
+        font-family: Courgette;
         font-size: 70px;
     }
 
 </style>
 <body>
     <div class="text-center">
-        <p style="font-size:200px; ">Shawarma <i style="color:red" ;font-size:200px>X</i></p>
+        <p style="font-size:200px; ">   Shawarma <i style="color:red" ;font-size:200px>X</i></p>
         <p></p>
     </div>
-    <h2>Offer Shawarma </h2>
-    <h4>Our weekly selection - just for you!</h4>
-
-    <div class="row">
+    <div style="background-color:whitesmoke">
+        <h2>Offer Shawarma </h2>
+        <h4>Our Offres selection - just for you!</h4>
+    </div>
+    <div class="list-group-item">
 
         @foreach (var shawarma in Model.Offers)
         {

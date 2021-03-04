@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShawarmaX.Models
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -15,6 +17,8 @@ namespace ShawarmaX.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Shawarma> Shawarmas { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -181,7 +185,7 @@ namespace ShawarmaX.Models
                 CategoryId = 2,
                 ImageUrl = "https://www.shawarmer.com/assets/api/products/40032-2.jpg",
                 InStock = true,
-                IsOffer = true,
+                IsOffer = false,
 
             });
             modelBuilder.Entity<Shawarma>().HasData(new Shawarma
